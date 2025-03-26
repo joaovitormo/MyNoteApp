@@ -4,6 +4,12 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
+    //alias(libs.plugins.ksp)
+    //alias(libs.plugins.dagger.hilt)
+    id("com.google.dagger.hilt.android") version "2.48" apply false
+    id("dagger.hilt.android.plugin")
+
+
 }
 
 android {
@@ -75,6 +81,11 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.7.8")
     debugImplementation("androidx.compose.ui:ui-tooling:1.7.8")
 
+    val lifecycle_version = "2.4.1"
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
     // Compose dependencies
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("androidx.navigation:navigation-compose:2.8.9")
@@ -86,9 +97,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.38.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.37")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    //implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    //implementation("androidx.hilt:hilt-*:1.2.0-rc01")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
     // Room
